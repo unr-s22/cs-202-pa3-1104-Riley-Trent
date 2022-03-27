@@ -7,7 +7,7 @@
 int main()
 {
     Money m(101,10);
-    Money n(100,11);
+    Money n(100,10);
     std::vector<Money> money;
     money.push_back(m);
     money.push_back(n);
@@ -17,15 +17,16 @@ int main()
     }
 
     Money o(0,0);
-    o = m - n;
+    o = m + n;
     std::cout << o;
 
-    if(m > n)
+    if(m >= n)
     {
         std::cout << "True" << std::endl;
     }
     else
     {
+
         std::cout << "False" << std::endl;
     }
     return 0;

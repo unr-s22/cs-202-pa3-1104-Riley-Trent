@@ -10,47 +10,19 @@
 
 class Money {
 private:
-    int dollars;
     int cents;
 public:
     Money();
     Money(int dollars, int cents);
-    Money operator +(const Money &c1)
-    {
-        int dollar, cent;
-        dollar = (dollars + c1.dollars);
-        cent = cents + c1.cents;
-
-        if(cent >= 100)
-        {
-            dollar += 1;
-            cent -= 100;
-        }
-
-        return Money(dollar, cent);
-    }
-    Money operator -(const Money &c1)
-    {
-        int dollar, cent;
-        dollar = dollars - c1.dollars;
-        cent = cents - c1.cents;
-
-        if(cent < 0)
-        {
-            cent += 100;
-            dollar -= 1;
-
-        }
-
-        return Money(dollar, cent);
-    }
+    Money operator +(const Money &c1);
+    Money operator -(const Money &c1);
     friend std::ostream& operator <<(std::ostream& os, const Money& money);
-    friend bool operator >(const Money &c1, const Money &c2);
-    friend bool operator <(const Money &c1, const Money &c2);
-    friend bool operator >=(const Money &c1, const Money &c2);
-    friend bool operator <=(const Money &c1, const Money &c2);
-    friend bool operator !=(const Money &c1, const Money &c2);
-    friend bool operator ==(const Money &c1, const Money &c2);
+    bool operator >(const Money &c1);
+    bool operator <(const Money &c1);
+    bool operator >=(const Money &c1);
+    bool operator <=(const Money &c1);
+    bool operator !=(const Money &c1);
+    bool operator ==(const Money &c1);
 };
 
 
