@@ -17,22 +17,26 @@ Money::Money(int dollarAmount, int centAmount)
 
 std::ostream& operator<< (std::ostream& os, const Money& money)
 {
-    if(money.cents % 100 < 10)
+    if(money.cents < 0)
+    {
+        if(money.cents * -1 % 100 < 10)
+        {
+            os << '$' << money.cents / 100 << ".0" << (money.cents * -1 % 100) << std::endl;
+        }
+        else
+        {
+            os << '$' << money.cents / 100 << '.' << (money.cents * -1 % 100) << std::endl;
+        }
+    }
+    else if(money.cents % 100 < 10)
     {
         os << '$' << money.cents / 100 << ".0" << money.cents % 100 << std::endl;
-        return os;
-    }
-    else if(money.cents < 0)
-    {
-        os << '$' << money.cents / 100 << '.' << (money.cents % 100) * -1 << std::endl;
-        return os;
     }
     else
     {
         os << '$' << money.cents / 100 << '.' << money.cents % 100 << std::endl;
-        return os;
     }
-
+    return os;
 }
 
 Money Money::operator+(const Money &c1)
