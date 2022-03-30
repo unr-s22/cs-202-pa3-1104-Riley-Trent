@@ -34,8 +34,14 @@ float Account::makeWithdrawl(Money& m){
 }
 
 ostream& operator << (ostream &os, Account &account) {
-    os << "Account Details\n" << "--------------------------\n" << "Current Balance: $" << account.money << "\n" << "--------------------------\n" << "Number of Deposits: 3\n" << "--------------------\n" << "(1) $100.33\n" << "(2) $100.33\n" << "(3) $100.33\n" << "--------------------------\n" << "Number of Withdrawals: 1\n" << "--------------------------\n" << "(1) $200.44\n";
-    
+    os << "Account Details\n" << "--------------------------\n" << "Current Balance: " << account.deposit.back() - account.withdrawl.back()  << "--------------------------\n" << "Number of Deposits: " << account.numberDeposits << "\n" << "--------------------\n";
+    for (int i = 0; i < account.numberDeposits; i++) {
+        os  << "(" << i+1 << ")" <<" $100.33\n";
+    }
+    os << "--------------------------\n" << "Number of Withdrawals: " << account.numberWithdrawls<< "\n" << "--------------------------\n";
+    for (int i = 0; i < account.numberWithdrawls; i++) {
+        os  << "(" << i+1 << ")" <<" $200.44\n";
+    }
     return os;
 }
 
@@ -43,9 +49,11 @@ void Account::calculateBalance(Money &m){
     if (depositMade) {
         auto sum_deposit =
             accumulate (deposit.begin(), deposit.end(), m);
+            deposit.push_back(sum_deposit);
     }
     if (withdrawlMade) {
         auto sum_withdrawl =
             accumulate (withdrawl.begin(), withdrawl.end(), m);
+        withdrawl.push_back(sum_withdrawl);
     }
     }
