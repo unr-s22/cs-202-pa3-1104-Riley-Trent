@@ -13,34 +13,21 @@
 using namespace std;
 
 int main() {
-    Money m(101,10);
-    Money n(100,10);
+    Money m(300,23);
+    Money n(200,00);
+    Money v(300,24);
+    Money r(501,22);
+    Money w(300,10);
+    Money x(201,34);
     std::vector<Money> money;
     money.push_back(m);
     money.push_back(n);
-    for(Money m: money)
-    {
-        std::cout << m;
-    }
-
-    Money o(0,0);
-    o = m + n;
-    std::cout << o;
-
-    if(m >= n)
-    {
-        std::cout << "True" << std::endl;
-    }
-    else
-    {
-
-        std::cout << "False" << std::endl;
-    }
     Account account(m);
-    account.makeDeposit(m);
-    account.makeDeposit(m);
-    account.makeDeposit(m);
-    account.makeWithdrawl(m);
+    account.makeDeposit(n);
+    account.makeDeposit(v);
+    account.makeDeposit(r);
+    account.makeWithdrawl(w);
+    account.makeWithdrawl(x);
     account.calculateBalance(m);
     cout << account;
     return 0;

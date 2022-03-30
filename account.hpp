@@ -19,8 +19,8 @@ public:
     Account();
     Account(Money& m);
     void calculateBalance(Money &m);
-    float makeDeposit(Money& m);
-    float makeWithdrawl(Money& m);
+    void makeDeposit(Money& m);
+    void makeWithdrawl(Money& m);
     friend ostream& operator << (ostream &os, Account &account);
     
 private:
@@ -31,6 +31,7 @@ private:
     bool withdrawlMade;
     bool depositMade;
     int money;
+    vector <Money> iBalance;
     vector <Money> deposit;
     vector <Money> withdrawl;
 };
